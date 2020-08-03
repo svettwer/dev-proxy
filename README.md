@@ -5,7 +5,7 @@ A proxy setup using docker for development purposes
 ## Get it
 ```bash
 git clone https://github.com/svettwer/dev-proxy
-cd dev-test-proxy
+cd dev-proxy
 ```
 
 ## Build it
