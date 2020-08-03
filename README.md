@@ -10,7 +10,7 @@ cd dev-proxy
 
 ## Build it
 ```bash
-docker build . -t squid
+docker build . -t dev-proxy
 ```
 
 ## Run it
@@ -20,7 +20,7 @@ sh run.sh
 
 ## Use it
 ```bash
-PROXY_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' squid)
+PROXY_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dev-proxy)
 wget -e use_proxy=yes -e http_proxy=http://foobar:foo@${PROXY_IP}:3128 google.de
 ```
 
