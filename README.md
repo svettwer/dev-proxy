@@ -29,4 +29,4 @@ Change `squid.conf`.
 See [Squid config docs](http://www.squid-cache.org/Doc/config/) for options.
 
 ## Reconfigure it
-To reload the config in a running dev-proxy container, use `docker kill -s HUP squid`.
+To reload the config in a running dev-proxy container, use `docker kill -s HUP dev-proxy`.
