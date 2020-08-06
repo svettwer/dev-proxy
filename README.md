@@ -27,3 +27,6 @@ wget -e use_proxy=yes -e http_proxy=http://foobar:foo@${PROXY_IP}:3128 google.de
 ## Configure it
 Change `squid.conf`.
 See [Squid config docs](http://www.squid-cache.org/Doc/config/) for options.
+
+## Reconfigure it
+To reload the config in a running dev-proxy container, use `docker kill -s HUP squid`.
