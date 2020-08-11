@@ -1,24 +1,30 @@
 # dev-proxy
-A proxy setup using docker for development purposes
-
+A proxy setup for development purposes using docker.
 
 ## Get it
-```bash
-git clone https://github.com/svettwer/dev-proxy
-cd dev-proxy
 ```
-
-## Build it
-```bash
-docker build . -t dev-proxy
+docker pull svettwer/dev-proxy
 ```
 
 ## Run it
+```bash
+docker run --it --rm --name dev-proxy \
+	--publish 3128:3128 \
+	--volume <PATH_TO>/squid.conf:/etc/squid/squid.conf \
+	--volume /srv/docker/squid/cache:/var/spool/squid \
+	dev-proxy
+```
+
+or use
+
 ```bash
 sh run.sh
 ```
 
 ## Use it
+The container ships with a preconfigured user to test proxy authentication.
+user: foobar
+password: foo
 ```bash
 PROXY_IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' dev-proxy)
 wget -e use_proxy=yes -e http_proxy=http://foobar:foo@${PROXY_IP}:3128 google.de
@@ -31,3 +37,10 @@ Config options of the base image can be found on [Docker hub](https://hub.docker
 
 ## Reconfigure it
 To reload the config in a running dev-proxy container, use `docker kill -s HUP dev-proxy`.
+
+## Build it yourself
+```bash
+git clone https://github.com/svettwer/dev-proxy
+cd dev-proxy
+docker build . -t dev-proxy
+```
